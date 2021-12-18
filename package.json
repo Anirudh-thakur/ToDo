@@ -1,0 +1,25 @@
+{
+  "name": "todoapp",
+  "version": "1.0.0",
+  "description": "A to do list app to showcase MERN stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anirudh-thakur/ToDo.git"
+  },
+  "keywords": [
+    "Mongo",
+    "React",
+    "Express",
+    "Node"
+  ],
+  "author": "Anirudh Thakur",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anirudh-thakur/ToDo/issues"
+  },
+  "homepage": "https://github.com/Anirudh-thakur/ToDo#readme"
+}
