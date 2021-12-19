@@ -1,5 +1,27 @@
 //specifying requirements 
 const express = require('express');
+// Used for connecting to DB 
+const mongoose = require('mongoose');
+
+// A middleware to check requests before parsing them
+const bodyParser = require('body-parser');
+
+// Used for importing routes
+const routes = require('./routes/api');
+
+// For using env variables 
+require('dotenv').config()
+
+
+//Connect to DB 
+mongoose
+  .connect(process.env.DB, { useNewUrlParser: true })
+  .then(() => console.log(`Database connected successfully`))
+  .catch((err) => console.log(err));
+
+// Since mongoose's Promise is deprecated, we override it with Node's Promise
+mongoose.Promise = global.Promise;
+
 
 //Creating express app
 const app = express();
@@ -15,8 +37,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  res.send('Welcome to Express');
+app.use(bodyParser.json());
+
+app.use('/api', routes);
+
+app.use((err, req, res, next) => {
+  console.log(err);
+  next();
 });
 
 app.listen(port, () => {
